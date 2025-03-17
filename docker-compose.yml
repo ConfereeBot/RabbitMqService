@@ -1,0 +1,18 @@
+services:
+  rabbitmq:
+    build:
+      context: .
+    container_name: rabbitmq
+    hostname: rabbitmq
+    restart: always
+    env_file:
+      # - ~/config/RabbitMqService/.env
+      - .env
+    ports:
+      - 15672:15672
+      - 5672:5672
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+volumes:
+  rabbitmq_data:
