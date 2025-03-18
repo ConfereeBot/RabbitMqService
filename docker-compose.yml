@@ -6,13 +6,15 @@ services:
     hostname: rabbitmq
     restart: always
     env_file:
-      # - ~/config/RabbitMqService/.env
       - .env
     ports:
       - 15672:15672
       - 5672:5672
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
+      - /home/gmeet/RabbitMq/definitions.json:/etc/rabbitmq/definitions.json
+    environment:
+      RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: "-rabbitmq_management load_definitions \"/etc/rabbitmq/definitions.json\""
 
 volumes:
   rabbitmq_data:
