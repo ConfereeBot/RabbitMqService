@@ -7,6 +7,5 @@ RUN wget -O /plugins/rabbitmq_delayed_message_exchange.ez \
 RUN rabbitmq-plugins enable --offline rabbitmq_delayed_message_exchange
 
 COPY definitions.json /etc/rabbitmq/definitions.json
-ENV RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS "-rabbitmq_management load_definitions /etc/rabbitmq/definitions.json"
 
 EXPOSE 5672 15672

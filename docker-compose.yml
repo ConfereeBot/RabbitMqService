@@ -5,13 +5,13 @@ services:
     container_name: rabbitmq
     hostname: rabbitmq
     restart: always
-    env_file:
-      - .env
     ports:
       - 15672:15672
       - 5672:5672
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
+    environment:
+      RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: "-rabbit log_levels [{connection,warning},{default,warning}] disk_free_limit 2147483648"
 
 volumes:
   rabbitmq_data:
